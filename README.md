@@ -35,7 +35,7 @@ Import the template from the Typst Universe preview:
 ```typ
 #import "@preview/htl-saalfelden-thesis-requirements:0.1.0": htl_doc
 
-#show: htl_doc.with(json(requirements.json))
+#show: htl_doc.with(json("requirements.json"))
 ```
 
 <picture>
