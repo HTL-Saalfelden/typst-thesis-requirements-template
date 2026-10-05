@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+if [[ $# -ne 1 ]]; then
+  echo "Usage: $0 <@local|@preview>" >&2
+  exit 1
+fi
+
+ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+. "${ROOT_DIR}/scripts/setup"
+
+TARGET_INPUT="$1"
+if [[ "${TARGET_INPUT}" != @* ]]; then
+  echo "Expected target prefix like @local or @preview" >&2
+  exit 1
+fi
+
+TARGET_DIR="${XDG_DATA_HOME:-${HOME}/.local/share}/typst/packages/${TARGET_INPUT#@}"
+rm -rf "${TARGET_DIR}/${PKG_PREFIX}/${VERSION}"

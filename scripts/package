@@ -1,0 +1,75 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+if [[ $# -ne 1 ]]; then
+  echo "Usage: $0 <target-dir|@local|@preview>" >&2
+  exit 1
+fi
+
+ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+. "${ROOT_DIR}/scripts/setup"
+
+TARGET_INPUT="$1"
+if [[ "${TARGET_INPUT}" == @* ]]; then
+  TARGET_DIR="${XDG_DATA_HOME:-${HOME}/.local/share}/typst/packages/${TARGET_INPUT#@}"
+else
+  TARGET_DIR="${TARGET_INPUT}"
+fi
+
+DEST_DIR="${TARGET_DIR}/${PKG_PREFIX}/${VERSION}"
+mkdir -p "${DEST_DIR}"
+
+python3 - "${ROOT_DIR}" "${DEST_DIR}" <<'PY'
+import fnmatch
+import os
+import shutil
+import sys
+
+root, dest = sys.argv[1], sys.argv[2]
+ignore_file = os.path.join(root, ".typstignore")
+
+patterns = []
+if os.path.exists(ignore_file):
+    with open(ignore_file, "r", encoding="utf-8") as f:
+        for raw in f:
+            line = raw.strip()
+            if not line or line.startswith("#"):
+                continue
+            patterns.append(line)
+
+def matches(path: str, pattern: str) -> bool:
+    if fnmatch.fnmatch(path, pattern):
+        return True
+    return path == pattern or path.startswith(pattern + "/")
+
+files_to_copy = []
+for dirpath, dirnames, filenames in os.walk(root):
+    rel_dir = os.path.relpath(dirpath, root)
+    if rel_dir == ".":
+        rel_dir = ""
+
+    dirnames[:] = [d for d in dirnames if d != ".git"]
+
+    for filename in filenames:
+        rel_path = os.path.normpath(os.path.join(rel_dir, filename))
+        if rel_path.startswith("./"):
+            rel_path = rel_path[2:]
+        if rel_path == ".typstignore":
+            continue
+
+        include = True
+        for pattern in patterns:
+            negate = pattern.startswith("!")
+            check = pattern[1:] if negate else pattern
+            if matches(rel_path, check):
+                include = negate
+
+        if include:
+            files_to_copy.append(rel_path)
+
+for rel_path in files_to_copy:
+    src = os.path.join(root, rel_path)
+    dst = os.path.join(dest, rel_path)
+    os.makedirs(os.path.dirname(dst), exist_ok=True)
+    shutil.copy2(src, dst)
+PY
