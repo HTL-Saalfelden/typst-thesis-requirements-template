@@ -41,8 +41,7 @@ Import the template from the Typst Universe preview:
 ```
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="./thumbnail-dark.svg">
-  <img src="./thumbnail-light.svg" alt="HTL Saalfelden Thesis Requirements Template">
+  <img src=".img/thumbnail.png" alt="HTL Saalfelden Thesis Requirements Template">
 </picture>
 
 ## Installation
