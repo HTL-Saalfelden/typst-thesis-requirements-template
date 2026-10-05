@@ -2,7 +2,7 @@
 
 [package]
 name = "htl-saalfelden-thesis-requirements"
-version = "0.1.3"
+version = "0.1.4"
 entrypoint = "template/template.typ"
 authors = ["Johannes Höllwerth <johannes.hoellwerth@htl-saalfelden.at>"]
 license = "Unlicense"
