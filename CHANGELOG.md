@@ -7,13 +7,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-<details>
-<summary>Migration guide from v0.1.X</summary>
-
-<!-- Write migration guide here -->
-
-</details>
-
 ### Added
 
 ### Changed
@@ -26,21 +19,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Security
 
-## [0.1.0] - 2025-01-01
+## [0.1.0] - 2025-10-04
 
 ### Added
 
-<!-- Describe the feature set of the initial release here -->
--
--
--
+- Initial release of HTL Saalfelden thesis requirements template
 
-<!--
-Below are the target URLs for each version
-You can link version numbers (in level-2 headings)
-to the corresponding tag on GitHub, or the diff
-in comparison to the previous release
--->
-
-[Unreleased]: https://github.com/<author>/<my-package>/compare/v0.1.0...HEAD
-[0.1.0]: https://github.com/<author>/<my-package>/releases/tag/v0.1.0
+[Unreleased]: https://github.com/scharlj/htl-saalfelden-thesis-requirements/compare/v0.1.0...HEAD
+[0.1.0]: https://github.com/scharlj/htl-saalfelden-thesis-requirements/releases/tag/v0.1.0

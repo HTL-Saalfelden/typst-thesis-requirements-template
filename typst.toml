@@ -1,18 +1,17 @@
 # for a description of available keys, see https://github.com/typst/packages/?tab=readme-ov-file#package-format
 
 [package]
-name = ""
+name = "htl-saalfelden-thesis-requirements"
 version = "0.1.0"
-entrypoint = "src/lib.typ"
-authors = []
-license = "Unlicense"
-description = ""
-homepage = ""
-repository = ""
-keywords = []
-categories = []
-disciplines = []
-# compiler = ""
+entrypoint = "template/template.typ"
+authors = ["Johannes Höllwerth <johannes.hoellwerth@htl-saalfelden.at>"]
+license = "MIT"
+description = "Typst template for HTL Saalfelden thesis requirements specifications (Pflichtenheft)."
+homepage = "https://github.com/htl-saalfelden/typst-thesis-requirements-template"
+repository = "https://github.com/htl-saalfelden/typst-thesis-requirements-template"
+keywords = ["thesis", "htl", "htl-saalfelden", "austria", "requirements", "pflichtenheft", "diploma", "template"]
+categories = ["template", "office"]
+disciplines = ["education"]
 exclude = [
   ".github",
   "docs",
@@ -24,10 +23,7 @@ exclude = [
   "thumbnail-light.svg",
 ]
 
-# [template]
-# path = "template"
-# entrypoint = "main.typ"
-# thumbnail = "thumbnail.png"
-
-# [tool.mytool]
-# foo = "bar"
+[template]
+path = "template"
+entrypoint = "template.typ"
+thumbnail = "thumbnail-light.svg"
