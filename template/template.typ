@@ -59,7 +59,7 @@ The candidates further acknowledge that, pursuant to § 9 (6) of the BMHS Examin
 
 #let regions = (de: "at", en: "us")
 
-#let htl_doc(data, body) = {
+#let htl-doc(data, body) = {
   let lang = data.at("lang", default: "de")
   assert(lang in strings, message: "lang must be of " + strings.keys().join(", "))
 

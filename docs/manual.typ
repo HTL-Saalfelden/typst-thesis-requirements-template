@@ -1,4 +1,4 @@
-#import "/template/template.typ": htl_doc
+#import "/template/template.typ": htl-doc
 
 #let title = "HTL Saalfelden Thesis Requirements Template - Manual"
 #set document(title: title)
@@ -26,7 +26,7 @@ This package provides a Typst template for creating thesis requirements specific
 Import the template:
 
 ```typ
-#import "@preview/htl-saalfelden-thesis-requirements:0.1.0": htl_doc
+#import "@preview/htl-saalfelden-thesis-requirements:0.1.4": htl-doc
 ```
 
 Apply it with parameters:
@@ -58,9 +58,9 @@ Apply it with parameters:
 ```
 
 ```typ
-#import "@preview/htl-saalfelden-thesis-requirements:0.1.0": htl_doc
+#import "@preview/htl-saalfelden-thesis-requirements:0.1.4": htl-doc
 
-#show: htl_doc.with(json(requirements.json))
+#show: htl-doc.with(json(requirements.json))
 ```
 
 = Parameters
