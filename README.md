@@ -32,9 +32,7 @@ due_date: "15.04.2027"
 #show: htl-doc.with(yaml("requirements.yaml"))
 ```
 
-<picture>
-  <img src=".img/thumbnail.png" alt="HTL Saalfelden Thesis Requirements Template">
-</picture>
+![HTL Saalfelden Thesis Requirements Template](./img/thumbnail.png)
 
 ## Installation
 
