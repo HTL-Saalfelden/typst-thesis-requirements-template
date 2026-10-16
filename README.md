@@ -8,36 +8,28 @@ See [PDF-manual](./docs/manual.pdf)
 
 Import the template from the Typst Universe preview:
 
-```json
-{
-  "title": "Thesis Title",
-  "subtitle": "Subtitle",
-  "lang": "en",
-  "school-year": "2026/27",
-  "class": "5AHETS",
-  "department": "Electrical Engineering",
-  "authors": "Johannes Höllwerth",
-  "candidates": [
-    {
-      "name": "Johannes Höllwerth",
-      "class": "5AHETS",
-      "task": "Develop foo classification system"
-    } 
-  ],
-  "supervisors": [
-    {
-      "title": "Dipl.-Ing. Dr.",
-      "name": "Gerhard Gaube"
-    }
-  ],
-  "due_date": "15.04.2027"
-}
+```yaml
+title: Thesis Title
+subtitle: Subtitle
+lang: en
+school-year: "2026/27"
+class: "5AHETS"
+department: Electrical Engineering
+authors: Johannes Höllwerth
+candidates:
+  - name: Johannes Höllwerth
+    class: "5AHETS"
+    task: Develop a foo classification system
+supervisors:
+  - title: Dipl.-Ing. Dr.
+    name: Gerhard Gaube
+due_date: "15.04.2027"
 ```
 
 ```typ
 #import "@preview/htl-saalfelden-thesis-requirements:0.1.4": htl-doc
 
-#show: htl-doc.with(json("requirements.json"))
+#show: htl-doc.with(yaml("requirements.yaml"))
 ```
 
 <picture>

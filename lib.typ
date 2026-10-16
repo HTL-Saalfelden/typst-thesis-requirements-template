@@ -71,7 +71,7 @@ The candidates further acknowledge that, pursuant to § 9 (6) of the BMHS Examin
   let tr(v) = if type(v) == dictionary { v.at(lang, default: v.values().first()) } else { v }
   let get(key, default) = tr(data.at(key, default: default))
 
-  // json data
+  // structured data
   let due_date = get("due_date", "")
   let school = get("school", "HTL Saalfelden")
   let department = get("department", "")
