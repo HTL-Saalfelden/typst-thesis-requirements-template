@@ -1,4 +1,4 @@
-#import "/template/template.typ": htl-doc
+#import "/lib.typ": htl-doc
 
 #let title = "HTL Saalfelden Thesis Requirements Template - Manual"
 #set document(title: title)

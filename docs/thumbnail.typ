@@ -1,4 +1,4 @@
-#import "/template/template.typ" as my-package: *
+#import "/lib.typ" as my-package: *
 
 #set page(height: auto, margin: 5mm, fill: none)
 
