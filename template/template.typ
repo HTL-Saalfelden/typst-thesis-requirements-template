@@ -26,6 +26,7 @@ Die Kandidaten / Kandidatinnen nehmen zur Kenntnis, dass die Diplomarbeit in eig
 Die Abgabe der vollständigen Diplomarbeit hat bis spätestens",
     statement_content_second: "beim zuständigen Betreuer zu erfolgen. 
 Die Kandidaten / Kandidatinnen nehmen weiters zur Kenntnis, dass gemäß § 9 (6) der Prüfungsordnung BMHS nur der Schulleiter bis spätestens Ende des vorletzten Semesters den Abbruch einer Diplomarbeit anordnen kann, wenn diese aus nicht beim Prüfungskandidaten (bei den Prüfungskandidaten) gelegenen Gründen nicht fertiggestellt werden kann.",
+    financing: [Bedeckung durch: ]
   ),
   en: (
     department-of: "Department of",
@@ -54,6 +55,7 @@ The completed thesis must be submitted no later than
 ",
     statement_content_second: "must be submitted to the assigned advisor.
 The candidates further acknowledge that, pursuant to § 9 (6) of the BMHS Examination Regulations, only the school principal may order the termination of a thesis by the end of the penultimate semester at the latest if it cannot be completed for reasons not attributable to the examinee(s).",
+    financing: [Financed by: ]
   ),
 )
 
@@ -77,7 +79,6 @@ The candidates further acknowledge that, pursuant to § 9 (6) of the BMHS Examin
   let authors = get("authors", "")
   let class = get("class", "")
   let usage = get("usage", "")
-  let project-number = class + "-" + school-year + "-" + get("project-number", "")
   let abstract = get("abstract", "")
 
   let cover = get("cover", true)
@@ -87,12 +88,14 @@ The candidates further acknowledge that, pursuant to § 9 (6) of the BMHS Examin
   let thesis-number = get("thesis-number", "")
   let candidates = get("candidates", ())
   let supervisors = get("supervisors", ())
+  let external_institution = get("external_institution", ())
+  let external_supervisor = get("external_supervisor", ())
+  let external_agreement = get("external_agreement", ())
 
   let header-left = get("header-left", [#school #department])
   let header-center = get("header-center", [])
   let header-right = get("header-right", [#school-year])
-  let footer-left = get("footer-left", [#authors])
-  let footer-center = get("footer-center", [#ui.project-number #project-number])
+  let footer-center = [#ui.project-number \ #class -#school-year -#thesis-number]
   let cover-footer = get("cover-footer", [#school #ui.department-of #department])
 
   let school-logo = get("school-logo", "assets/school-logo.svg")
@@ -136,7 +139,7 @@ The candidates further acknowledge that, pursuant to § 9 (6) of the BMHS Examin
           #grid(
             columns: (2931fr, 4015fr, 2829fr),
             align: (left, center, right),
-            footer-left,
+            candidates.map(person => person.name).join(linebreak()),
             footer-center,
             [#ui.page #counter(page).display("1/1", both: true)],
           )
@@ -242,16 +245,16 @@ The candidates further acknowledge that, pursuant to § 9 (6) of the BMHS Examin
     inset: 10pt,
     align: center,
     table.header([*#ui.external_partners*]),
-    table.cell(align: left, [#ui.external_institution:]),
-    table.cell(align: left, [#ui.external_supervisor:]),
-    table.cell(align: left, [#ui.external_agreement:])
+    table.cell(align: left, [#ui.external_institution: #external_institution]),
+    table.cell(align: left, [#ui.external_supervisor: #external_supervisor]),
+    table.cell(align: left, [#ui.external_agreement: #external_agreement])
   )
   table(
     columns: (100%),
     inset: 10pt,
     align: horizon,
     table.header([*#ui.budget*]),
-    [Bedeckung durch: ]
+    [#ui.financing]
   )
   table(
     columns: (100%),
